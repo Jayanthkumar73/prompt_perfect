@@ -1,6 +1,6 @@
 # ✨ Prompt Perfecter
 
-AI-powered prompt engineer that transforms simple prompts into detailed, effective instructions for generative AI models using Google's Gemini 2.5 Pro.
+AI-powered prompt engineer that transforms simple prompts into detailed, effective instructions for generative AI models using Google's Gemini 2.5 Flash.
 
 ## 🚀 Features
 
