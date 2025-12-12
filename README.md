@@ -26,7 +26,7 @@ AI-powered prompt engineer that transforms simple prompts into detailed, effecti
 
 2. **Install required packages**
    ```bash
-   pip install google-generativeai python-dotenv
+   pip install -r requirements.txt
    ```
 
 3. **Set up your API key**
@@ -38,7 +38,26 @@ AI-powered prompt engineer that transforms simple prompts into detailed, effecti
 
 ## 💻 Usage
 
-Run the script:
+### Option 1: Web Interface (Recommended) 🌐
+
+Run the Streamlit web app for a beautiful, interactive interface:
+
+```bash
+streamlit run app.py
+```
+
+The app will open in your browser at `http://localhost:8501`
+
+**Features:**
+- 🎨 Beautiful, user-friendly interface
+- 📊 Model selection (Pro vs Flash)
+- 📜 Prompt history
+- 📋 Easy copy/paste
+- 💡 Built-in examples
+
+### Option 2: Command Line 💻
+
+Run the CLI script:
 ```bash
 python perfecter.py
 ```
@@ -67,17 +86,46 @@ Avoid: violence, dark themes, or overly complex vocabulary
 
 ## 🎯 Available Models
 
-The script currently uses `gemini-2.5-flash`. You can change the model in `perfecter.py`:
+Both the web app and CLI support multiple Gemini models:
 
 - **`gemini-2.5-pro`** - Highest quality, best for complex prompts
 - **`gemini-2.5-flash`** - Fast and balanced (default)
 - **`gemini-pro-latest`** - Always uses the latest Pro version
 - **`gemini-flash-latest`** - Always uses the latest Flash version
 
-To change the model, edit line 37 in `perfecter.py`:
+**Web App:** Select model from the sidebar dropdown
+
+**CLI:** Edit line 37 in `perfecter.py`:
 ```python
 model=genai.GenerativeModel('gemini-2.5-pro')  # Change model name here
 ```
+
+## 🚀 Deployment
+
+### Deploy to Streamlit Cloud (Free)
+
+1. Push your code to GitHub
+2. Go to [share.streamlit.io](https://share.streamlit.io)
+3. Connect your GitHub repository
+4. Add your `GOOGLE_API_KEY` in the Secrets section:
+   ```toml
+   GOOGLE_API_KEY = "your_api_key_here"
+   ```
+5. Click "Deploy"!
+
+### Deploy to Other Platforms
+
+**Heroku:**
+```bash
+# Add Procfile
+echo "web: streamlit run app.py --server.port=$PORT" > Procfile
+git push heroku main
+```
+
+**Railway/Render:**
+- Set build command: `pip install -r requirements.txt`
+- Set start command: `streamlit run app.py`
+- Add `GOOGLE_API_KEY` environment variable
 
 ## ⚙️ Configuration
 
