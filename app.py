@@ -107,10 +107,10 @@ def main():
         st.header("⚙️ Settings")
         
         model_options = {
-            "Gemini 2.5 Pro (Best Quality)": "gemini-2.5-pro",
+            
             "Gemini 2.5 Flash (Fast & Balanced)": "gemini-2.5-flash",
-            "Gemini Pro Latest": "gemini-pro-latest",
-            "Gemini Flash Latest": "gemini-flash-latest"
+           
+            "Gemini Flash Latest": "gemini-flash-latest",
         }
         
         selected_model = st.selectbox(
