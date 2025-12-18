@@ -70,8 +70,13 @@ Your Perfected Prompt:
 # Configure Gemini API
 def configure_gemini():
     api_key = os.getenv('GOOGLE_API_KEY')
+    
+    # Check Streamlit secrets if env var not found (for Cloud deployment)
+    if not api_key and "GOOGLE_API_KEY" in st.secrets:
+        api_key = st.secrets["GOOGLE_API_KEY"]
+
     if not api_key:
-        st.error("❌ GOOGLE_API_KEY not found in .env file. Please set it up.")
+        st.error("❌ GOOGLE_API_KEY not found. Please set it in .env file (local) or Streamlit Secrets (cloud).")
         st.stop()
     genai.configure(api_key=api_key)
 
