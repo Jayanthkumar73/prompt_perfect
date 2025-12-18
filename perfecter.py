@@ -16,20 +16,19 @@ genai.configure(api_key=GOOGLE_API_KEY)
 
 
 
-meta_prompt='''
-You are an expert prompt engineer. Your role is to take a user's simple prompt and rewrite it to be more detailed, specific, and effective for a generative AI.
+meta_prompt = """
+Act as an expert prompt optimizer. Your task is to rewrite the provided prompt to be more detailed, specific, and effective for an LLM.
 
-You should enhance the prompt by:
-1. Adding specific context and background.
-2. Defining a clear structure or format for the desired output.
-3. Specifying a tone or persona for the AI to adopt.
-4. Including constraints or negative prompts to avoid unwanted content.
-5. Ensuring the core intent of the original prompt is preserved and clarified.
+CRITICAL OUTPUT RULES:
+1. Output ONLY the raw text of the improved prompt.
+2. Do NOT include any headers (e.g., "Constraints:", "Perfected Prompt:", "Analysis:").
+3. Do NOT include any introductory or concluding remarks.
+4. Do NOT answer the user's prompt.
 
-User's Raw Prompt: "{user_prompt}"
+Original Prompt: "{user_prompt}"
 
-Your Perfected Prompt:
-'''
+Optimized Prompt:
+"""
 try:
     model=genai.GenerativeModel('gemini-2.5-flash')
     raw_prompt=input("Enter a prompt: ")
